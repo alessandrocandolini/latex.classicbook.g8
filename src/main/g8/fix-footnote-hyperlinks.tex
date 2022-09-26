@@ -1,0 +1,119 @@
+\makeatletter
+\ifx\c@Hfootnote\undefined
+\newcounter{Hfootnote}%
+\fi
+
+  \let\H@@footnotetext\@footnotetext
+  \let\H@@footnotemark\@footnotemark
+  \def\@xfootnotenext[#1]{%
+    \begingroup
+      \csname c@\@mpfn\endcsname #1\relax
+      \unrestored@protected@xdef\@thefnmark{\thempfn}%
+    \endgroup
+    \ifx\@footnotetext\@mpfootnotetext
+      \expandafter\H@@mpfootnotetext
+    \else
+      \expandafter\H@@footnotetext
+    \fi
+  }%
+  \def\@xfootnotemark[#1]{%
+    \begingroup
+      \c@footnote #1\relax
+      \unrestored@protected@xdef\@thefnmark{\thefootnote}%
+    \endgroup
+    \H@@footnotemark
+  }%
+  \let\H@@mpfootnotetext\@mpfootnotetext
+  \long\def\@mpfootnotetext#1{%
+    \H@@mpfootnotetext{%
+      \ifHy@nesting
+        \expandafter\hyper@@anchor\expandafter{%
+          \Hy@footnote@currentHref
+         }{#1}%
+      \else
+        \Hy@raisedlink{%
+          \expandafter\hyper@@anchor\expandafter{%
+            \Hy@footnote@currentHref
+          }{\relax}%
+        }#1%
+      \fi
+    }%
+  }%
+  \long\def\@footnotetext#1{%
+    \H@@footnotetext{%
+      \ifHy@nesting
+        \expandafter\hyper@@anchor\expandafter{%
+          \Hy@footnote@currentHref
+        }{#1}%
+      \else
+        \Hy@raisedlink{%
+          \expandafter\hyper@@anchor\expandafter{%
+            \Hy@footnote@currentHref
+          }{\relax}%
+        }%
+        \let\@currentHref\Hy@footnote@currentHref
+        \let\@currentlabelname\@empty
+        #1%
+      \fi
+    }%
+  }%
+  \def\@footnotemark{%
+    \leavevmode
+    \ifhmode\edef\@x@sf{\the\spacefactor}\nobreak\fi
+    \stepcounter{Hfootnote}%
+    \global\let\Hy@saved@currentHref\@currentHref
+    \hyper@makecurrent{Hfootnote}%
+    \global\let\Hy@footnote@currentHref\@currentHref
+    \global\let\@currentHref\Hy@saved@currentHref
+    \hyper@linkstart{link}{\Hy@footnote@currentHref}%
+    \@makefnmark
+    \hyper@linkend
+    \ifhmode\spacefactor\@x@sf\fi
+    \relax
+  }%
+
+
+\long\def\@footnotetext#1{%
+      \H@@footnotetext{%
+        \ifHy@nesting
+         \hyper@@anchor{\@currentHref}{#1}%
+       \else
+         \Hy@raisedlink{\hyper@@anchor{\@currentHref}{\relax}}#1%
+       \fi
+     }}
+
+
+  \def\@footnotemark{%
+     \leavevmode
+     \ifhmode\edef\@x@sf{\the\spacefactor}\nobreak\fi
+     \H@refstepcounter{Hfootnote}%
+     \hyper@makecurrent{Hfootnote}%
+     \hyper@linkstart{link}{\@currentHref}%
+     \@makefnmark
+     \hyper@linkend
+     \ifhmode\spacefactor\@x@sf\fi
+     \relax
+   }%
+
+ \ifFN@multiplefootnote%
+     \renewcommand*\@footnotemark{%
+      \leavevmode
+      \ifhmode
+        \edef\@x@sf{\the\spacefactor}%
+        \FN@mf@check
+        \nobreak
+      \fi
+      \H@refstepcounter{Hfootnote}%
+      \hyper@makecurrent{Hfootnote}%
+      \hyper@linkstart{link}{\@currentHref}%
+      \@makefnmark
+      \hyper@linkend
+      \FN@mf@prepare
+      \ifhmode\spacefactor\@x@sf\fi
+      \relax%
+    }%
+ \fi
+
+\makeatother
+
+

@@ -1,0 +1,180 @@
+\documentclass[10pt,a4paper,footinclude=true,headinclude=true]{scrbook}
+
+\newcommand{\myName}{$author$}
+\newcommand{\myTitle}{$title$}
+\newcommand{\myLocation}{London}
+\newcommand{\myTime}{\today}
+
+% *****************************************************************************
+%  Main packages
+% *****************************************************************************
+
+\usepackage[T1]{fontenc}
+\usepackage[applemac]{inputenc}
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+
+
+% typography
+\usepackage[hyphenation]{impnattypo}
+\usepackage[biblatex=true]{embrac}
+\usepackage[final]{microtype}
+
+\usepackage{listings}
+
+\usepackage{makeidx}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{sidecap}
+\usepackage{url}
+\usepackage[font=small, noorphanfirst, indentfirst=false]{quoting}
+
+
+
+% *****************************************************************************
+% BIBLaTeX
+% *****************************************************************************
+\usepackage[%
+style=philosophy-modern,
+%style=philosophy-classic,
+scauthorsbib,
+hyperref,backref,
+backend=biber,
+square,
+natbib,ibidtracker=false]{biblatex}
+
+\bibliography{myBibliography9}
+
+% ClassicThesis
+\usepackage[pdfspacing, eulerchapternumbers,listings,subfig,eulermath,parts]{classicthesis}
+
+
+% Footnote
+\usepackage[perpage, symbol*, stable, multiple]{footmisc}
+\setlength{\footnotemargin}{.6em}%
+
+\usepackage{fnpct}
+\setfnpct{add-punct-marks=:}
+\setfnpct{add-punct-marks=;}
+
+\usepackage{footnotebackref}
+\include{fix-footnote-hyperlinks}
+
+\newenvironment{citazione}%
+  {\begin{quotation}\small\ignorespaces}%
+  {\end{quotation}}
+\newenvironment{approfondimento}%
+  {\begin{quotation}\small\ignorespaces}%
+  {\end{quotation}}
+
+\graphicspath{{./},{./Asymptote/}, {./Images/}}
+
+% i.e.
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.}
+
+
+% ********************************************************************
+% hyperref
+% ********************************************************************
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=RoyalBlue,citecolor=webgreen,
+    pdftitle={\myTitle},%
+    pdfauthor={\textcopyright\ \myName},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX con hyperref e ClassicThesis}%
+}
+
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+
+% *****************************************************************************
+% Math
+% *****************************************************************************
+
+% AMSmath packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+% comandi per gli insiemi numerici (serve il pacchetto amssymb)
+\newcommand{\numberset}{\mathbb}
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Z}{\numberset{Z}}
+\newcommand{\Q}{\numberset{Q}}
+\newcommand{\R}{\numberset{R}}
+\newcommand{\C}{\numberset{C}}
+
+\usepackage{braket}
+\usepackage{cool}
+
+% Theorems
+\usepackage{amsthm}
+
+\makeatletter
+\newtheoremstyle{classicdef}%
+{11pt}%                                   % Before
+{11pt}%                                   % After
+{}%                                       % Font
+{}%                                       % Rientro (se vuoto, nessun rientro;
+%                                         % \parindent = rientro dei capoversi)
+{\scshape}%                               % Font
+{:}%
+{.5em}%
+{}%
+\makeatother
+
+\theoremstyle{classicdef}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem*{homework}{Homework}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\renewcommand{\qedsymbol}{\rule{.5em}{.5em}}
+
+
+\usepackage{caption}                      % Fancy captions and more.
+\captionsetup{format=hang,font=small}
+\captionsetup[table]{skip=\medskipamount}
+
+\usepackage{mathtools}
+\usepackage{flexisym}
+\usepackage{breqn}
+\include{fix-euler-font}
+
+\setkeys{breqn}{labelprefix={eq:}}
+
+
+% *****************************************************************************
+% Main
+% *****************************************************************************
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+\input{FrontBackmatter/Titlepage}
+\input{FrontBackmatter/Titleback}
+\pagestyle{scrheadings}
+\input{FrontBackmatter/TableOfContents}
+\input{FrontBackmatter/Preface}
+\cleardoublepage
+\pagenumbering{arabic}
+\input{Chapters/Chapter1}
+\input{Chapters/Chapter2}
+\input{Chapters/Chapter3}
+\appendix
+\input{Chapters/AppendixA}
+\input{FrontBackmatter/Bibliography}
+\input{FrontBackmatter/Index}
+\end{document}
