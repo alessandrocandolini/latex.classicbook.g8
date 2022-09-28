@@ -9,13 +9,13 @@ There are plenty of templating tools available (eg, cookiecutter or jinjia in py
 
 The template generates a fresh new LaTeX project based on the [classicthesis](https://ctan.org/pkg/classicthesis?lang=en) layout, inspired by one of my favourite books in typography, namely, Robert Bringhurst’s classic “The Elements of Typographic Style” (highly recommended to learn more about typography at its finest). 
 
-The template relies on an opinionated setup, in connection with a number of other LaTeX packages thaty manage
+The template relies on an opinionated setup, in connection with a number of other LaTeX packages that manage
 1. finer typography (eg, microtype, fnpct, impnattypo, embrac, etc)
 2. bibliography (biblatex, biber support, etc) 
 3. math (eg, amssym, breqn, etc) 
 4. and more
 
-Some of the choices can be considered controversial (eg, `breqn`, which rarely produces optimal line breaking in equations, however sometimes I prefer to just use it to focus on the equation itself rather than about the layout of the equation, which should be one of the main selling points of using LaTeX). 
+Some of the choices can be considered controversial (eg, `breqn`, which rarely produces optimal line breaking in equations, however sometimes I prefer to just use it to focus on the equation itself rather than about the layout of the equation; separating the "what" from the "how it's rendered" should be one of the main selling points of using LaTeX). 
 
 This template is work-in-progress and constantly evolving: choice of the plugins, structure of the project, "hacks" (eg, the file to support euler fonts with flexysm, or the fixes to make classicthesis footnotes hyperlinked) are not always ideal, and hopefully will improve over time. So, don't rely too much on those, take some of the choices with a grain of salt, and use this template at your own risk. I setup this template mostly because i need a quick way to kick off new project from scratch without the burden of copy-paste from old notes. 
 
