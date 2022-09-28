@@ -34,6 +34,8 @@ jobs:
       - name: Run the template through sbt new
         run: |
           sbt new file://$(pwd) --name=testproject --force
+          ls -l 
+          ls -l testproject
         shell: bash
 
       - name: Compile generated LaTeX document
