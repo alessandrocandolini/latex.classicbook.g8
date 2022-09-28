@@ -19,7 +19,7 @@ Some of the choices can be considered controversial (eg, `breqn`, which rarely p
 
 This template is work-in-progress and constantly evolving: choice of the plugins, structure of the project, "hacks" (eg, the file to support euler fonts with flexysm, or the fixes to make classicthesis footnotes hyperlinked) are not always ideal, and hopefully will improve over time. So, don't rely too much on those, take some of the choices with a grain of salt, and use this template at your own risk. I setup this template mostly because i need a quick way to kick off new project from scratch without the burden of copy-paste from old notes. 
 
-## How to use it 
+## How to use it 
 
 You need either [sbt](https://www.scala-sbt.org/) or [g8](https://www.foundweekends.org/giter8/) installed in your system. For example, using nix 
 ```bash
@@ -32,8 +32,10 @@ brew install sbt
 
 Once sbt is installed, it is possible to generate a new project using 
 ```
-sbt new git@github.com:alessandrocandolini/latex.classicbook.g8.git --title=<title> --author=<project author> --force
+sbt new git@github.com:alessandrocandolini/latex.classicbook.g8.git --name=<name> --title=<title> --author=<project author> --force
 ```
+This will generate a folder `name` (if not already present) and create a new project in it. 
+
 `name` is the only mandatory option here. If you don't specify the other options, by default `title=name` and `author` is set to be my personal name. 
 
 
