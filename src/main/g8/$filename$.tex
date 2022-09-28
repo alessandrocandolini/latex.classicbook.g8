@@ -50,7 +50,13 @@ natbib,ibidtracker=false]{biblatex}
 \bibliography{myBibliography9}
 
 % ClassicThesis
-\usepackage[pdfspacing, eulerchapternumbers,listings,subfig,eulermath,parts]{classicthesis}
+\usepackage[pdfspacing,
+  eulerchapternumbers,
+  listings,
+  eulermath,
+  %style=arsclassica,
+  parts,
+  floatperchapter]{classicthesis}
 
 
 % Footnote
@@ -106,7 +112,6 @@ natbib,ibidtracker=false]{biblatex}
 
 % AMSmath packages
 \usepackage{amssymb}
-\usepackage{amsmath}
 
 % comandi per gli insiemi numerici (serve il pacchetto amssymb)
 \newcommand{\numberset}{\mathbb}
@@ -157,6 +162,10 @@ natbib,ibidtracker=false]{biblatex}
 \setkeys{breqn}{labelprefix={eq:}}
 
 
+% Cleveref
+\usepackage{cleveref}
+\crefname{chapter}{\S}{\S}
+\Crefname{chapter}{\S}{\S}
 % *****************************************************************************
 % Main
 % *****************************************************************************
