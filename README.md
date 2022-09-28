@@ -1,3 +1,5 @@
+[![Template ci](https://github.com/alessandrocandolini/latex.classicbook.g8/actions/workflows/ci.yml/badge.svg)](https://github.com/alessandrocandolini/latex.classicbook.g8/actions/workflows/ci.yml)
+
 # latex.classicbook.g8
 
 Unofficial opinionated [Giter8][g8] template for latex notes
