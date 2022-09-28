@@ -1,0 +1,43 @@
+name: Template ci 
+
+on:
+  push:
+    branches: [ main, 'feature/*' ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and Test
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+
+      - name: Checkout current branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run the template through sbt new
+        run: |
+          sbt new file://$(pwd) --name=testproject --force
+        shell: bash
+
+      - name: Compile generated LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: testproject.tex
+          working_directory: testproject
