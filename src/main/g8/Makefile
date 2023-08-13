@@ -1,5 +1,5 @@
 help:     ## Show this help.
-	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
+	@sed -ne '/@sed/!s/## //p' \$(MAKEFILE_LIST)
 
 all: $filename$.pdf ## build all targets
 
